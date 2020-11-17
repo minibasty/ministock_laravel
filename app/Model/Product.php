@@ -20,6 +20,7 @@ class Product extends Model
       'product_price',
       'product_image',
       'product_category',
-      'product_status'
+      'product_status',
+
     ];
 }

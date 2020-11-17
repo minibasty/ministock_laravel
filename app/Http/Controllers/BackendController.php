@@ -27,4 +27,8 @@ class BackendController extends Controller
         return 'Settings';
     }
 
+    public function nopermission(){
+        return view('backend.pages.nopermission');
+    }
+
 }

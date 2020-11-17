@@ -19,6 +19,7 @@ Auth::routes();
 /*
 /* -------------------------------- FRONT END ------------------------------- */
 Route::get('/', 'HomeController@index');
+
 // Route::get('login', 'BackendController@login');
 
 
@@ -31,6 +32,7 @@ Route::group([
 
     // Blank page
     Route::get('blank', 'BackendController@blank');
+    Route::get('nopermission', 'BackendController@nopermission');
 
     //routing resource product
     Route::resource('products', 'ProductController');
@@ -38,9 +40,10 @@ Route::group([
 
 });
 
-// USER
+// ADMIN
 Route::group([
-    'prefix' => 'backend'
+    'prefix' => 'backend',
+    'middleware' => 'admin'
 ], function () {
     Route::get('reports', 'BackendController@reports');
     Route::get('users', 'BackendController@users');

@@ -58,11 +58,19 @@
           <div class="form-group row col-12">
             <div class="col"><b>สถานะ</b></div>
             <div class="col">
-              @if($product->product_status == 1)
-              <span class="badge badge-success">In Stock</span>
-              @else
-              <span class="badge badge-danger">Out of Stock</span>
-              @endif
+            {!! config('global.pro_status')[ $product->product_status]!!}
+            </div>
+          </div>
+          <div class="form-group row col-12">
+            <div class="col"><b>วันที่แก้สร้าง</b></div>
+            <div class="col">
+                {{ date("d/m/Y", strtotime($product->created_at)) }}
+            </div>
+          </div>
+          <div class="form-group row col-12">
+            <div class="col"><b>วันที่แก้ไข</b></div>
+            <div class="col">
+            {{ date("d/m/Y", strtotime($product->updated_at)) }}
             </div>
           </div>
 

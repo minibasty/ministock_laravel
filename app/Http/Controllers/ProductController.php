@@ -111,7 +111,7 @@ class ProductController extends Controller
         'product_price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/',
         'product_category' => 'required'
         ];
-        
+
         $message = [
         'required' => 'จำเป็นต้องกรอก :attreibute',
         'integer' => 'ตัวเลขเท่านั้น',
@@ -119,18 +119,18 @@ class ProductController extends Controller
         'size' => 'ความยาวไม่เกิน :size ตัว',
         'digits' => 'จำนวนไม่เกิน :digits หลัก'
         ];
-        
+
         $validator = Validator::make($request->all(),$rules,$message);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }else{
             $product->update($request->all());
             $message = 'แก้ไขข้อมูล "'.$product->product_name.'" เรียบร้อย';
-            return redirect()->route('products.index')->with('success',$message);        
+            return redirect()->route('products.index')->with('success',$message);
         }
-        
-        
-        
+
+
+
     }
 
     /**

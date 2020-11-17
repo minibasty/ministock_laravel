@@ -22,30 +22,8 @@
             </p>
           </a>
         </li>
+        @if(Auth::user()->isAdmin == 1)
         <li class="nav-header">ADMIN MANAGE</li>
-        <li class="nav-item has-treeview menu-open">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-cubes"></i>
-            <p>
-              Stock
-              <i class="fas fa-angle-left right"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="/backend/products" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>List Product</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/backend/products/create" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Add Product</p>
-              </a>
-            </li>
-          </ul>
-        </li>
         <li class="nav-item">
           <a href="{{ url('backend/reports')}}" class="nav-link">
             <i class="nav-icon fas fa-cubes"></i>
@@ -61,30 +39,39 @@
             <i class="nav-icon fas fa-cubes"></i>
             <p>Setting</p>
           </a></li>
-
+        @endif
         <li class="nav-header">USER MANAGE</li>
-        <li class="nav-item has-treeview menu-open">
-          <a href="#" class="nav-link">
+        <li class="nav-item has-treeview {{ (request()->is('backend/products*')) ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link ">
             <i class="nav-icon fas fa-cubes"></i>
             <p>
-              Stock
+              Products
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="/backend/report" class="nav-link">
+              <a href="/backend/products" class="nav-link {{ (request()->is('backend/products')) ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Report</p>
+                <p>List Product</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="/backend/products/create" class="nav-link">
+              <a href="/backend/products/create" class="nav-link {{ (request()->is('backend/products/create')) ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Add Product</p>
               </a>
             </li>
           </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{url('logout')}}" class="nav-link">
+            <i class="nav-icon fas fa-sign-out"></i>
+            <p>
+              Sign out
+            </p>
+          </a>
         </li>
       </ul>
     </nav>
